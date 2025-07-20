@@ -31,7 +31,7 @@ internal class Program
         Hopper Hopper1 = new Hopper(2000);
         Hopper Hopper2 = new Hopper(3000);
         Hopper Hopper3 = new Hopper(4000);
-        Train train = new Train(locomotive, new List<Object> { BusinessWagon, NightWagon, Hopper, Hopper1, Hopper2 });
+        Train train = new Train(locomotive, new List<IWagon> { BusinessWagon, NightWagon, Hopper, Hopper1, Hopper2 });
         foreach(var wagon in train.Wagons)
         {
             Console.WriteLine(wagon);

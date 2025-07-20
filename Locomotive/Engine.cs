@@ -14,7 +14,7 @@ namespace Locomotive
 		{
 			get { return engineName; }
 			set { engineName = value;
-                if (!value.Equals("diesel") || !value.Equals("parní") || !value.Equals("elektrická"))
+                if (!value.Equals("diesel") && !value.Equals("parní") && !value.Equals("elektrická"))
                 {
                     throw new ArgumentException("Neplatný typ motoru. Platné hodnoty jsou: diesel, parní, elektrický.");
                 }

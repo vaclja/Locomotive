@@ -9,7 +9,7 @@ namespace Locomotive
     internal class Train
     {
         public Locomotiva Locomotive { get; set; }
-        public List<Object> Wagons { get; set; }
+        public List<IWagon> Wagons { get; set; }
 
         public Train()
         {
@@ -19,7 +19,7 @@ namespace Locomotive
         {
             Locomotive = locomotive;
         }
-        public Train(Locomotiva locomotive, List<Object> wagons)
+        public Train(Locomotiva locomotive, List<IWagon> wagons)
         {
             Locomotive = locomotive;
             Wagons = wagons;
@@ -28,7 +28,7 @@ namespace Locomotive
                 Console.WriteLine("Parní lokomotiva nemůže mít více než 5 vagónů.");
             }
         }
-        public void ConnectWagon(Object wagon)
+        public void ConnectWagon(IWagon wagon)
         {
             if (Wagons == null)
             {
@@ -44,7 +44,7 @@ namespace Locomotive
                 Wagons.Add(wagon);
             }
         }
-        public void DisconnectWagon(Object wagon)
+        public void DisconnectWagon(IWagon wagon)
         {
             if (Wagons == null || !Wagons.Contains(wagon))
             {
@@ -57,35 +57,32 @@ namespace Locomotive
         {
             if (Wagons == null || wagonIndex < 0 || wagonIndex >= Wagons.Count)
             {
-                Console.WriteLine("Wagon s daným indexem neexistuje.");
+                Console.WriteLine("Zadaný index vagónu je mimo rozsah.");
                 return;
             }
+
             var wagon = Wagons[wagonIndex];
+
             if (wagon is not PersonalWagon personalWagon)
             {
-                Console.WriteLine("Wagon není typu PersonalWagon.");
+                Console.WriteLine("Tento vagón není osobní – nelze rezervovat židli.");
                 return;
             }
-            else
+
+            if (seatIndex < 0 || seatIndex >= personalWagon.Chairs.Count)
             {
-                wagon = wagon as PersonalWagon;
-                var chair = personalWagon.Chairs[seatIndex];
-            }
-            if(seatIndex < 0 || seatIndex >= personalWagon.Chairs.Count)
-            {
-                Console.WriteLine("Židle s daným indexem ve wagónu neexistuje.");
+                Console.WriteLine("Židle s tímto indexem neexistuje.");
                 return;
             }
+
             if (personalWagon.Chairs[seatIndex].Reserved)
             {
-                Console.WriteLine("Židle je již rezervována.");
+                Console.WriteLine("Židle už je rezervována.");
                 return;
             }
-            else
-            {
-                personalWagon.Chairs[seatIndex].Reserved = true;
-                Console.WriteLine($"Židle {seatIndex} ve wagónu {wagonIndex} byla úspěšně rezervována.");
-            }
+
+            personalWagon.Chairs[seatIndex].Reserved = true;
+            Console.WriteLine($"Židle {seatIndex} ve vagónu {wagonIndex} byla úspěšně rezervována.");
         }
         public void ListReservedChairs()
         {
@@ -94,9 +91,9 @@ namespace Locomotive
                 Console.WriteLine("Žádné wagony nejsou k dispozici.");
                 return;
             }
+            int index = 0;
             foreach (var wagon in Wagons)
             {
-                int index = 0;
                 if (wagon is PersonalWagon personalWagon)
                 {
                     for (int i = 0; i < personalWagon.Chairs.Count; i++)

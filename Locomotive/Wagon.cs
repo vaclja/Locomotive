@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal abstract class PersonalWagon
+    internal abstract class PersonalWagon : IWagon
     {
         public List<Door> Doors { get; set; }
         public List<Chair> Chairs { get; set; }
@@ -22,6 +22,8 @@ namespace Locomotive
         {
             return $"Wagon with {numberOfChairs} chairs, {Doors.Count} doors and {Chairs.Count} chairs.";
         }
+        public abstract bool ConnectToTrain(Train train);
+        public abstract bool DisconnectFromTrain(Train train);
     }
     internal class EconomyWagon : PersonalWagon
     {
@@ -38,6 +40,14 @@ namespace Locomotive
         {
             return "This is economy Wagon." + base.ToString();
 
+        }
+        public override bool ConnectToTrain(Train train)
+        {
+            return true;
+        }
+        public override bool DisconnectFromTrain(Train train)
+        {
+            return true;
         }
     }
     internal class BusinessWagon : PersonalWagon
@@ -62,6 +72,15 @@ namespace Locomotive
         {
             return $"This is business Wagon." + base.ToString() + $"Steward is {steward}";
         }
+        public override bool ConnectToTrain(Train train)
+        {
+            return true;
+        }
+        public override bool DisconnectFromTrain(Train train)
+        {
+            return true;
+        }
+
     }
     internal class NightWagon : PersonalWagon
     {
@@ -88,12 +107,22 @@ namespace Locomotive
                 Chairs.Add(new Chair(false, i));
             }
         }
+
+        public override bool ConnectToTrain(Train train)
+        {
+            return true;
+        }
+        public override bool DisconnectFromTrain(Train train)
+        {
+            return true;
+        }
         public override string ToString()
         {
             return "This is night Wagon." + base.ToString() + $"Number of beds {numberOfBeds}";
         }
+
     }
-    internal class Hopper
+    internal class Hopper : IWagon
     {
         private double loadingCapacity;
 
@@ -109,6 +138,14 @@ namespace Locomotive
         public override string ToString()
         {
             return $"This is Hopper, it has loading capacity of {loadingCapacity}";
+        }
+        public bool ConnectToTrain(Train train)
+        {
+            return false;
+        }
+        public bool DisconnectFromTrain(Train train)
+        {
+            return false;
         }
     }
 }
