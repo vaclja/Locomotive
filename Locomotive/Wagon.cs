@@ -27,7 +27,11 @@ namespace Locomotive
     {
         public EconomyWagon(int numberOfChairs) : base(numberOfChairs)
         {
-
+            this.numberOfChairs = numberOfChairs;
+            for (int i = 0; i < numberOfChairs; i++)
+            {
+                Chairs.Add(new Chair(false, i));
+            }
         }
 
         public override string ToString()
@@ -47,7 +51,12 @@ namespace Locomotive
         }
         public BusinessWagon(int numberOfChairs, Person steward) : base(numberOfChairs)
         {
-
+            this.numberOfChairs = numberOfChairs;
+            this.steward = steward;
+            for (int i = 0; i < numberOfChairs; i++)
+            {
+                Chairs.Add(new Chair(false, i));
+            }
         }
         public override string ToString()
         {
@@ -72,6 +81,11 @@ namespace Locomotive
             for (int i = 0; i < numberOfBeds; i++)
             {
                 beds.Add(new Bed());
+            }
+            this.numberOfChairs = numberOfChairs;
+            for (int i = 0; i < numberOfChairs; i++)
+            {
+                Chairs.Add(new Chair(false, i));
             }
         }
         public override string ToString()

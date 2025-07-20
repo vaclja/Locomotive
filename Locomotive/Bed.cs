@@ -18,7 +18,7 @@ namespace Locomotive
 
 		private double width;
 
-		public int Width
+		public double Width
 		{
 			get { return width; }
 			set { width = value; }

@@ -6,27 +6,26 @@ using System.Threading.Tasks;
 
 namespace Locomotive;
 
-internal class Locomotive
+internal class Locomotiva
 {
     private Person driver;
-
-    public string Driver
+    public Person Driver
     {
         get { return driver; }
         set { driver = value; }
     }
     private Engine engine;
 
-    private Engine Engine
+    public Engine Engine
     {
         get { return engine; }
         set { engine = value; }
     }
-    public Locomotive()
+    public Locomotiva()
     {
         // Výchozí konstruktor
     }
-    public Locomotive(Person driver, Engine engine)
+    public Locomotiva(Person driver, Engine engine)
     {
         this.driver = driver;
         this.engine = engine;
@@ -34,15 +33,6 @@ internal class Locomotive
 
     public override string ToString()
     {
-        return "něco";
-    }
-
-
-    public static void Run()
-    {
-        Console.WriteLine("Spouštím program Locomotive...");
-        // Zde by mohl být kód pro spuštění programu Locomotive
-        // Například inicializace, načtení dat, atd.
-        Console.WriteLine("Program Locomotive byl úspěšně spuštěn.");
+        return $"Řidič: {driver}, Motor: {engine}";
     }
 }

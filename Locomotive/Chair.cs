@@ -32,6 +32,9 @@ namespace Locomotive
 
 		public Chair(bool nearWindow, int number)
         {
+            this.nearWindow = nearWindow;
+            this.number = number;
+            this.reserved = false; // Výchozí hodnota pro rezervaci
         }
     }
 }
