@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal class Person
+    public class Person
     {
 		private string name;
 

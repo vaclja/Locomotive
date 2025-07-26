@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal class Engine
+    public class Engine
     {
 		private string engineName;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive;
 
-internal class Locomotiva
+public class Locomotiva
 {
     private Person driver;
     public Person Driver

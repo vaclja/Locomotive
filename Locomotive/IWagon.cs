@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal interface IWagon
+    public interface IWagon
     {
         bool ConnectToTrain(Train train);
         bool DisconnectFromTrain(Train train);

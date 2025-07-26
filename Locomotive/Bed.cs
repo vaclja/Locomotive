@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal class Bed
+    public class Bed
     {
 		private double height;
 

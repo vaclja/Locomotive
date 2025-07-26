@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal class Train
+    public class Train
     {
         public Locomotiva Locomotive { get; set; }
         public List<IWagon> Wagons { get; set; }

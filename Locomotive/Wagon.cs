@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal abstract class PersonalWagon : IWagon
+    public abstract class PersonalWagon : IWagon
     {
         public List<Door> Doors { get; set; }
         public List<Chair> Chairs { get; set; }
@@ -25,7 +25,7 @@ namespace Locomotive
         public abstract bool ConnectToTrain(Train train);
         public abstract bool DisconnectFromTrain(Train train);
     }
-    internal class EconomyWagon : PersonalWagon
+    public class EconomyWagon : PersonalWagon
     {
         public EconomyWagon(int numberOfChairs) : base(numberOfChairs)
         {
@@ -50,7 +50,7 @@ namespace Locomotive
             return true;
         }
     }
-    internal class BusinessWagon : PersonalWagon
+    public class BusinessWagon : PersonalWagon
     {
         private Person steward;
 
@@ -82,7 +82,7 @@ namespace Locomotive
         }
 
     }
-    internal class NightWagon : PersonalWagon
+    public class NightWagon : PersonalWagon
     {
         List<Bed> beds { get; set; }
         private int numberOfBeds;
@@ -122,7 +122,7 @@ namespace Locomotive
         }
 
     }
-    internal class Hopper : IWagon
+    public class Hopper : IWagon
     {
         private double loadingCapacity;
 

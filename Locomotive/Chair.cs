@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locomotive
 {
-    internal class Chair
+    public class Chair
     {
 		private bool nearWindow;
 
