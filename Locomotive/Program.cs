@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace Program;
 
@@ -16,7 +17,7 @@ internal class Program
         NightWagon nightWagon = new NightWagon(20, 10);
         Hopper hopper = new Hopper(1000);
         Locomotiva locomotive = new Locomotiva(new Person("Karel", "Novák"), new Engine("diesel"));
-        Train train = new Train(locomotive, new List<IWagon> { businessWagon, nightWagon, hopper });
+        Train train = new Train(locomotive, new ObservableCollection<IWagon> { businessWagon, nightWagon, hopper });
         Hopper hopper1 = new Hopper(2000);
         train.ConnectWagon(hopper1);
         Console.WriteLine(train.ToString());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,17 @@ namespace Locomotive
     public class Train
     {
         public Locomotiva Locomotive { get; set; }
-        public List<IWagon> Wagons { get; set; }
+        public IList<IWagon> Wagons { get; set; }
 
         public Train()
         {
-            // Výchozí konstruktor
+            Wagons = new ObservableCollection<IWagon>();
         }
         public Train(Locomotiva locomotive )
         {
             Locomotive = locomotive;
         }
-        public Train(Locomotiva locomotive, List<IWagon> wagons)
+        public Train(Locomotiva locomotive, ObservableCollection<IWagon> wagons)
         {
             Locomotive = locomotive;
             Wagons = wagons;
